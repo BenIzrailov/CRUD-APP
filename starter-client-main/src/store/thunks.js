@@ -30,6 +30,16 @@ export const fetchCampusThunk = (id) => async (dispatch) => {
   }
 };
 
+//add campus
+export const addCampusThunk = (campus) => async (dispatch) => {
+  try {
+    let res = await axios.post(`/api/campuses`, campus);
+    dispatch(ac.addStudent(res.data));
+  } catch(err) {
+    console.error(err);
+  }
+};
+
 //All students
 export const fetchAllStudentsThunk = () => async (dispatch) => {
   try {
@@ -44,6 +54,7 @@ export const addStudentThunk = (student) => async (dispatch) => {
   try {
     let res = await axios.post(`/api/students`, student);
     dispatch(ac.addStudent(res.data));
+    return res.data;
   } catch(err) {
     console.error(err);
   }
