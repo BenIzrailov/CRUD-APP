@@ -16,6 +16,7 @@ const AllCampusesView = (props) => {
           <p>{campus.description}</p>
         </div>
       ))}
+      {/* <button>Add Campus</button> */}
     </div>
   );
 };

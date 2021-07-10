@@ -1,7 +1,7 @@
 import { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchAllCampusesThunk } from "../../store/thunks";
+import { fetchAllCampusesThunk, addCampusThunk} from "../../store/thunks";
 import { AllCampusesView } from "../views";
 
 class AllCampusesContainer extends Component {
@@ -30,8 +30,27 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchAllCampuses: () => dispatch(fetchAllCampusesThunk()),
+    addCampusThunk: (campus) =>dispatch(addCampusThunk(campus))
   };
 };
+
+const AddCampus = () => {
+  return (
+    <form>
+      <div className = 'form-control'>
+      <label>Campus Name:</label>
+      <input type='text' placeholder='Add Campus'/>
+      </div>
+      <div className = 'form-control'>
+      <label>Description: </label>
+      <input type='text' placeholder='Add Campus'/>
+      </div>
+
+      <input type='submit' value='Save Campus' />
+    </form>
+  )
+}
+
 
 // Type check props;
 AllCampusesContainer.propTypes = {
