@@ -24,8 +24,8 @@ const AllCampusesView = (props) => {
           <Link to={`/campus/${campus.id}`}>
             <h1>{campus.name}</h1>
           </Link>
-          <img src="https://images.unsplash.com/photo-1576495199011-eb94736d05d6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2FtcHVzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80" alt="campus" width="100" height="100"/>
-          <h2>Address: 695 Park Ave, New York, NY 10065</h2>
+          <img src={campus.imgurl} height = '150' width = '250'/>
+          <h2>{campus.address}</h2>
           <p>{campus.description}</p>
           <FaTimes style={{color:'red',cursor:'pointer'}} onClick={() => deleteCampus(campus.id)}>Delete</FaTimes>
           <Link to={`/editcampus`}>

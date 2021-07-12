@@ -23,10 +23,11 @@ const AllStudentsView = (props) => {
         return (
           <div key={student.id}>
           <Link to={`/student/${student.id}`}>
-            <h1>{name}</h1>
+            <h1>Name: {name}</h1>
           </Link>
-          <h2>{name}@{student.campus.name}.com</h2>
-          <h3>GPA:3.5</h3>
+          <img src={student.imgurl} height = '150' width = '250'/>
+          <h2>Email:{name}@{student.campus.name}.com</h2>
+          <h3>GPA:{student.gpa}</h3>
           <FaTimes style={{color:'red',cursor:'pointer'}} onClick={() => deleteStudent(student.id)}>Delete</FaTimes>
           <Link to={`/editstudent`}>
           <button>Edit</button>
