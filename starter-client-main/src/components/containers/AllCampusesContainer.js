@@ -1,7 +1,10 @@
 import { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchAllCampusesThunk, addCampusThunk} from "../../store/thunks";
+import { fetchAllCampusesThunk, 
+  deleteCampusThunk,
+  editCampusThunk
+} from "../../store/thunks";
 import { AllCampusesView } from "../views";
 
 class AllCampusesContainer extends Component {
@@ -12,10 +15,14 @@ class AllCampusesContainer extends Component {
 
   render() {
     return (
+      <div>
       <AllCampusesView
-        allCampuses={this.props.allCampuses}
+        campuses={this.props.allCampuses}
+        deleteCampus ={this.props.deleteCampus}
+        editCampus = {this.props.editCampus}
       />
-    );
+      </div>
+    )
   }
 }
 
@@ -30,33 +37,8 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchAllCampuses: () => dispatch(fetchAllCampusesThunk()),
-    addCampusThunk: (campus) =>dispatch(addCampusThunk(campus))
+    deleteCampus: (campusId) => dispatch(deleteCampusThunk(campusId)),
+    editCampus: (campus) => dispatch(editCampusThunk(campus))
   };
 };
-
-const AddCampus = () => {
-  return (
-    <form>
-      <div className = 'form-control'>
-      <label>Campus Name:</label>
-      <input type='text' placeholder='Add Campus'/>
-      </div>
-      <div className = 'form-control'>
-      <label>Description: </label>
-      <input type='text' placeholder='Add Campus'/>
-      </div>
-
-      <input type='submit' value='Save Campus' />
-    </form>
-  )
-}
-
-
-// Type check props;
-AllCampusesContainer.propTypes = {
-  allCampuses: PropTypes.array.isRequired,
-  fetchAllCampuses: PropTypes.func.isRequired,
-};
-
-// Export our store-connected container by default;
 export default connect(mapState, mapDispatch)(AllCampusesContainer);

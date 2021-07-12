@@ -1,7 +1,7 @@
 import { FETCH_CAMPUS } from "../actions/actionTypes";
 
 const initialState = {
-  students: [],
+  students: []
 };
 
 const campus = (state = initialState, action) => {
