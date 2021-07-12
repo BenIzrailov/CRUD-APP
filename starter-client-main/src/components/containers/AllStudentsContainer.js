@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import { 
   fetchAllStudentsThunk,
+  addStudentThunk,
   deleteStudentThunk
 } from '../../store/thunks';
 import AllStudentsView from '../views/AllStudentsView';
